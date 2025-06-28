@@ -5,8 +5,9 @@
 function pollForTermAndSetup() {
     function isSmartwatchMode() {
         const urlParams = new URLSearchParams(window.location.search);
-        if (urlParams.get('watch') === 'true') {
-            console.log('Detection: Manual override "?watch=true" detected. Forcing smartwatch mode.');
+        const hasSquareParam = window.location.search.includes('square');
+        if (urlParams.get('watch') === 'true' || hasSquareParam) {
+            console.log('Detection: Manual override "?watch=true" or "?square" detected. Forcing smartwatch mode.');
             return true;
         }
 
@@ -68,15 +69,16 @@ function pollForTermAndSetup() {
                     }
                     html, body {
                         margin: 0 !important;
-                        padding: 15% !important;
+                        padding: 10% 2.5% !important;
                         overflow: hidden !important;
                         height: 100vh !important;
                         width: 100vw !important;
+			background: rgb(43, 43, 43) !important;
                     }
                     .terminal, .xterm, .xterm-viewport, .xterm-screen {
                         margin: 10% !important;
                         padding: 5% !important;
-                        font-size: 18px !important;
+                        font-size: 16px !important;
                         line-height: 1.3 !important;
                         transform: scale(1.2) !important;
                         transform-origin: center !important;
